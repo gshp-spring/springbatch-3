@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<planetas>
+    <planeta>
+        <codigo>1</codigo>
+        <nombre>Mercurio</nombre>
+    </planeta>
+    <planeta>
+        <codigo>2</codigo>
+        <nombre>Venus</nombre>
+    </planeta>
+    <planeta>
+        <codigo>3</codigo>
+        <nombre>Marte</nombre>
+    </planeta>
+</planetas>

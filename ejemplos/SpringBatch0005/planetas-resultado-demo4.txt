@@ -1,0 +1,8 @@
+Mercurio;rocoso
+Venus;telurico
+Tierra;telurico
+Martes;telurico
+Jupiter;gaseoso
+Saturno;gaseoso
+Urano;gaseoso
+Neptuno;gaseoso

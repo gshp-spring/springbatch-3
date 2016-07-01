@@ -1,0 +1,8 @@
+10|Mercurio|mensajero de los dioses
+20|Venus|diosa del amor y de la belleza
+30|Tierra|madre de todos los dioses
+40|Marte|dios de la guerra
+50|Jupiter|dios supremo y creador del universo
+60|Saturno|dios titan y padre de jupiter
+70|Urano|dios del cielo
+80|Neptuno|dios del mar
