@@ -32,11 +32,7 @@ public class App {
             Job job = (Job) ctx.getBean("trabajoBatch");
             jobLauncher.run(job, new JobParameters());
             System.out.println("Job ejecutado");
-        } catch (JobExecutionAlreadyRunningException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JobRestartException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JobInstanceAlreadyCompleteException ex) {
+        } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JobParametersInvalidException ex) {
         }

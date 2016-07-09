@@ -78,7 +78,7 @@
         </batch:step>
     </batch:job>
 
-<bean id="listener" class="com.curso.java.springbatch0007.PlanetaItemListener"/>
+    <bean id="listener" class="com.curso.java.springbatch0007.PlanetaItemListener"/>
 
     <!--
         Lector de planteas. Esta reader de archivos planos es una clase
@@ -121,12 +121,12 @@
     <bean id="consolaItemWriter" class="com.curso.java.springbatch0007.ConsolaItemWriter"/>
 
     <!--
-        Este bean es usado por "planetaItemReader" (en particular, por su
-        fieldSetMapper), para convertir cada línea del archivo de origen a un
-        objeto.
-        Su scope TIENE que ser "prototype", ya que se necesita una instancia
-        nueva por cada invocación.
-     -->
+       Este bean es usado por "planetaItemReader" (en particular, por su
+       fieldSetMapper), para convertir cada línea del archivo de origen a un
+       objeto.
+       Su scope TIENE que ser "prototype", ya que se necesita una instancia
+       nueva por cada invocación.
+    -->
     <bean id="planeta" scope="prototype" class="com.curso.java.springbatch0007.Planeta"/>
 
 </beans>

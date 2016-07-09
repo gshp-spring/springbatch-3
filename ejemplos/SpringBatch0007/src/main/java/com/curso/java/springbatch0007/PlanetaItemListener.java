@@ -24,7 +24,7 @@ public class PlanetaItemListener extends ItemListenerSupport<Planeta, Planeta> {
     public void onReadError(Exception throwable) {
         super.onReadError(throwable);
 
-        System.out.println("WARNING!!! PlanetaItemListener - Exception en read" + throwable.getMessage());
+        System.out.println("ATENCIÓN!!! PlanetaItemListener - Exception en read" + throwable.getMessage());
     }
 
     /**
@@ -35,13 +35,13 @@ public class PlanetaItemListener extends ItemListenerSupport<Planeta, Planeta> {
         super.onWriteError(throwable, item);
 
         if (item == null || item.isEmpty()) {
-            System.out.println("WARNING!!! PlanetaItemListener - El write recibió un item nulo" + throwable.getMessage());
+            System.out.println("ATENCIÓN!!! PlanetaItemListener - El write recibió un item nulo" + throwable.getMessage());
             return;
         }
 
-        for (Planeta planeta : item) {
-            System.out.println("WARNING!!! PlanetaItemListener - Exception escribiendo el planeta: " + planeta.getNombre() + " - " + throwable.getMessage());
-        }
+        item.stream().forEach((planeta) -> {
+            System.out.println("ATENCIÓN!!! PlanetaItemListener - Exception escribiendo el planeta: " + planeta.getNombre() + " - " + throwable.getMessage());
+        });
 
     }
 }

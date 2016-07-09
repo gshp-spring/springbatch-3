@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.curso.java.springbatch0008;
 
 import java.util.Date;
@@ -17,19 +16,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * El ejemplo trata sobre la lectura de un archivo y la impresión 
- * de su contenido en pantalla usando hilos concurrentes.
- * 
+ * El ejemplo trata sobre la lectura de un archivo y la impresión de su
+ * contenido en pantalla usando hilos concurrentes.
+ *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-batch-demo.xml"})
 public class EjecucionMultithreadTest {
 
-    /** Este objeto es el encargado de lanzar una tarea */
+    /**
+     * Este objeto es el encargado de lanzar una tarea
+     */
     @Autowired
     private SimpleJobLauncher launcher;
-    
-    /** La tarea a ejecutar. */
+
+    /**
+     * La tarea a ejecutar.
+     */
     @Autowired
     private Job job;
 
@@ -39,7 +42,7 @@ public class EjecucionMultithreadTest {
         builder.addDate("Ejecucion", new Date());
         builder.addString("jobName", "Imprimir planetas con hilos concurrentes");
         JobParameters parameters = builder.toJobParameters();
-        
+
         launcher.run(job, parameters);
     }
 }

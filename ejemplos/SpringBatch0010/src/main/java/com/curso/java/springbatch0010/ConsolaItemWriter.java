@@ -13,8 +13,8 @@ import org.springframework.batch.item.ItemWriter;
 public class ConsolaItemWriter implements ItemWriter<Planeta> {
 
     private StepExecution stepExecution;
-    
-    private int numeroInformado=1;
+
+    private int numeroInformado = 1;
 
     public int getNumeroInformado() {
         return numeroInformado;
@@ -24,21 +24,23 @@ public class ConsolaItemWriter implements ItemWriter<Planeta> {
         this.numeroInformado = numeroInformado;
     }
 
-    
     public StepExecution getStepExecution() {
         return stepExecution;
     }
 
+    @Override
     public void write(List<? extends Planeta> item) throws Exception {
 
         CabeceraArchivo cabeceraArchivo = (CabeceraArchivo) getStepExecution().getExecutionContext().get(CabeceraHandler.KEY_CABECERA);
         Collection<Planeta> col = (Collection<Planeta>) item;
-        for (final Planeta planeta : col) {
-            System.out.println("Registro "+getNumeroInformado()+ " de " +
-                    cabeceraArchivo.getCantidadRegistros() + ". " +
-                    cabeceraArchivo.getDescripcion() + ": "+ planeta.getNombre());
-            setNumeroInformado(getNumeroInformado()+1);
-        }
+        col.stream().map((planeta) -> {
+            System.out.println("Registro " + getNumeroInformado() + " de "
+                    + cabeceraArchivo.getCantidadRegistros() + ". "
+                    + cabeceraArchivo.getDescripcion() + ": " + planeta.getNombre());
+            return planeta;
+        }).forEach((_item) -> {
+            setNumeroInformado(getNumeroInformado() + 1);
+        });
     }
 
     @BeforeStep

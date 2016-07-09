@@ -26,6 +26,7 @@ public class JdbcItemWriter implements ItemWriter<Planeta> {
     @Resource
     private ItemWriter<Planeta> consolaItemWriter;
     
+    @Override
     public void write(List<? extends Planeta> items) throws Exception {
         Connection con = ds.getConnection();
         PreparedStatement ps = con.prepareStatement("insert into nombres values (?,?)");

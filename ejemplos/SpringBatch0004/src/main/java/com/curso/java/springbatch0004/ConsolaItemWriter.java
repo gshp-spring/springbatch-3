@@ -9,9 +9,10 @@ import org.springframework.batch.item.ItemWriter;
 
 public class ConsolaItemWriter implements ItemWriter<Planeta> {
 
+    @Override
     public void write(List<? extends Planeta> list) throws Exception {
-        for (final Planeta planeta : list) {
+        list.forEach((planeta) -> {
             System.out.println(planeta.getNombre());
-        }
+        });
     }
 }

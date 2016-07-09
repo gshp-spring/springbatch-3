@@ -6,8 +6,10 @@ package com.curso.java.springbatch0006;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.compass.core.CompassCallback;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.compass.core.CompassDetachedHits;
+import org.compass.core.CompassHit;
 import org.compass.core.CompassHits;
 import org.compass.core.CompassQuery;
 import org.compass.core.CompassSession;
@@ -18,8 +20,11 @@ import org.springframework.batch.item.UnexpectedInputException;
 
 public class IndiceItemReader extends CompassDaoSupport implements ItemReader {
 
+    private static final Logger LOG = Logger.getLogger(IndiceItemReader.class.getName());
+
     private int ejecucion = 0;
 
+    @Override
     public Object read() throws Exception, UnexpectedInputException, ParseException {
         /**
          * Esto es solo para que se ejecute una vez
@@ -48,32 +53,30 @@ public class IndiceItemReader extends CompassDaoSupport implements ItemReader {
         final String query = queryIndice;
         final int from = 0;
         final int size = 100;
-        List<Planeta> planeta = new ArrayList<Planeta>();
+        List<Planeta> planeta = new ArrayList<>();
 
         try {
             // Esto se hace para poder buscar usando un OR
-            results = getCompassTemplate().execute(new CompassCallback<CompassDetachedHits>() {
-                public CompassDetachedHits doInCompass(final CompassSession session) {
-                    CompassQuery compassQuery = session.queryBuilder().queryString(query).useOrDefaultOperator().toQuery();
-                    CompassHits activeHits = compassQuery.hits();
-                    CompassDetachedHits detachedHits = null;
-                    // Work around a compass bug.
-                    if (activeHits.getLength() > (from + size)) {
-                        detachedHits = activeHits.detach(from, size);
-                    } else if (activeHits.getLength() > from) {
-                        detachedHits = activeHits.detach(from, (activeHits.getLength() - from));
-                    }
-                    return detachedHits;
+            results = getCompassTemplate().execute((final CompassSession session) -> {
+                CompassQuery compassQuery = session.queryBuilder().queryString(query).useOrDefaultOperator().toQuery();
+                CompassHits activeHits = compassQuery.hits();
+                CompassDetachedHits detachedHits = null;
+                // Work around a compass bug.
+                if (activeHits.getLength() > (from + size)) {
+                    detachedHits = activeHits.detach(from, size);
+                } else if (activeHits.getLength() > from) {
+                    detachedHits = activeHits.detach(from, (activeHits.getLength() - from));
                 }
+                return detachedHits;
             });
 
             if (results != null) {
-                for (int i = 0; i < results.getHits().length; i++) {
-                    planeta.add((Planeta) results.getHits()[i].getData());
+                for (CompassHit hit : results.getHits()) {
+                    planeta.add((Planeta) hit.getData());
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.log(Level.SEVERE, ()->e.toString());
         }
         return planeta;
     }

@@ -99,8 +99,8 @@
     </bean>
 
     <!--
-        Esta es la clase encargada de realizar la busqueda en el indice
-     -->
+       Esta es la clase encargada de realizar la busqueda en el indice
+    -->
     <bean id="indiceItemReader" class="com.curso.java.springbatch0006.IndiceItemReader">
         <property name="compass" ref="compass"/>
     </bean>

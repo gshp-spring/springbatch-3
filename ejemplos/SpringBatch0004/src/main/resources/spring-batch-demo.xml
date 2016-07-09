@@ -80,7 +80,7 @@
         <property name="rowMapper">
             <bean id="planetaMapper" class="org.springframework.jdbc.core.BeanPropertyRowMapper">
                 <property name="mappedClass">
-                      <value type="java.lang.Class">com.curso.java.springbatch0004.Planeta</value>
+                    <value type="java.lang.Class">com.curso.java.springbatch0004.Planeta</value>
                 </property>
             </bean>
         </property>

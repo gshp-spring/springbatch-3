@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.curso.java.springbatch0005;
 
 public class Planeta {
+
     private int codigo;
     private String nombre;
     private long diametro;
@@ -56,8 +56,8 @@ public class Planeta {
     public String toString() {
         String desc = "Planeta:" + getNombre();
         desc += " - Diametro:" + getDiametro();
-        desc += " - Tipo:" + getTipo(); 
+        desc += " - Tipo:" + getTipo();
         desc += " - Significado:" + getSignificado();
         return desc;
-    }        
+    }
 }

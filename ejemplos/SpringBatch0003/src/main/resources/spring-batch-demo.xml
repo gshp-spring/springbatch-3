@@ -135,12 +135,12 @@
     </bean>
 
     <!--
-        Este bean es usado por "planetaItemReader" (en particular, por su
-        fieldSetMapper), para convertir cada línea del archivo de origen a un
-        objeto.
-        Su scope TIENE que ser "prototype", ya que se necesita una instancia
-        nueva por cada invocación.
-     -->
+       Este bean es usado por "planetaItemReader" (en particular, por su
+       fieldSetMapper), para convertir cada línea del archivo de origen a un
+       objeto.
+       Su scope TIENE que ser "prototype", ya que se necesita una instancia
+       nueva por cada invocación.
+    -->
     <bean id="planeta" scope="prototype" class="com.curso.java.springbatch0003.Planeta"/>
 
 </beans>

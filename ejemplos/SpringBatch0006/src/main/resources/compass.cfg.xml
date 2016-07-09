@@ -4,10 +4,10 @@
 
 <compass-core-configuration>
 
-  <compass name="default">
+    <compass name="default">
     
-    <!-- Class mappings -->
-    <mapping class="com.curso.java.springbatch0006.Planeta" />
+        <!-- Class mappings -->
+        <mapping class="com.curso.java.springbatch0006.Planeta" />
 
-  </compass>
+    </compass>
 </compass-core-configuration>

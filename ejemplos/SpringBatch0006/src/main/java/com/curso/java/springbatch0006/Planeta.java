@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.curso.java.springbatch0006;
 
 import org.compass.annotations.Index;
@@ -12,6 +11,7 @@ import org.compass.annotations.SearchableProperty;
 
 @Searchable
 public class Planeta {
+
     @SearchableId
     private int codigo;
     @SearchableProperty(index = Index.TOKENIZED)
@@ -67,8 +67,8 @@ public class Planeta {
     public String toString() {
         String desc = "Planeta:" + getNombre();
         desc += " - Diametro:" + getDiametro();
-        desc += " - Tipo:" + getTipo(); 
+        desc += " - Tipo:" + getTipo();
         desc += " - Significado:" + getSignificado();
         return desc;
-    }        
+    }
 }
