@@ -95,7 +95,7 @@
         del "itemReader". Cada elemento leido por el "planetaItemReader" es
         procesado por este "itemWriter". 
         "archivoPlanoItemWriter" recibe un Planeta y guarda solo algunos datos
-        del planeta en el archivo "planetas-resultado-demo2.txt", separada 
+        del planeta en el archivo "planetas-resultado-demo4.txt", separada 
         cada columna por el caracter ";".
         
         El atributo "resource" indica dónde se guardará el archivo resultante.

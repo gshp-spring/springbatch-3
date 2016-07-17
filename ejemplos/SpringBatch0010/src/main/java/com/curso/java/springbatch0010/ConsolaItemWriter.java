@@ -39,6 +39,7 @@ public class ConsolaItemWriter implements ItemWriter<Planeta> {
                     + cabeceraArchivo.getDescripcion() + ": " + planeta.getNombre());
             return planeta;
         }).forEach((_item) -> {
+//            System.out.println("_Item: " + _item);
             setNumeroInformado(getNumeroInformado() + 1);
         });
     }

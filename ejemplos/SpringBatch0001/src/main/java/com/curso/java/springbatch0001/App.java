@@ -26,13 +26,7 @@ public class App {
             Job job = ctx.getBean(Job.class);
             jobLauncher.run(job, new JobParameters());
             System.out.println("Job ejecutado");
-        } catch (JobExecutionAlreadyRunningException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JobRestartException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JobInstanceAlreadyCompleteException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JobParametersInvalidException ex) {
+        } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException | JobParametersInvalidException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

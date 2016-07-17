@@ -13,8 +13,6 @@ import org.springframework.beans.factory.FactoryBean;
  * Clase que se encarga de construir una instancia de org.compass.core.Compass
  * Esta clase es usada por Spring para poder inyectarle a otro Bean el objeto
  * que crea.
- *
- * @author jubarre
  */
 public class CompassFactory implements FactoryBean {
 

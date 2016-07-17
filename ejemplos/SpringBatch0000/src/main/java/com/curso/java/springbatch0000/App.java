@@ -20,30 +20,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
 
     public static void main(String[] args) {
-        ejecutarConApplicationContext();
-//        ejecutarConCommandLineJobRunner();
-    }
-
-    private static void ejecutarConApplicationContext() {
-        try {
-            ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-batch-demo.xml");
-            System.out.println("Contexto cargado");
-            JobLauncher jobLauncher = (JobLauncher) ctx.getBean("jobLauncher");
-            Job job = (Job) ctx.getBean("trabajoBatch");
-            jobLauncher.run(job, new JobParameters());
-            System.out.println("Job ejecutado");
-        } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JobParametersInvalidException ex) {
-        }
-    }
-
-    private static void ejecutarConCommandLineJobRunner() {
-
         try {
             CommandLineJobRunner.main(new String[]{"spring-batch-demo.xml", "trabajoBatch"});
             System.out.println("Job ejecutado");
-
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }

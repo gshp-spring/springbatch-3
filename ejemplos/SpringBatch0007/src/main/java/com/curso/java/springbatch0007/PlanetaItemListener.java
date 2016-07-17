@@ -24,7 +24,7 @@ public class PlanetaItemListener extends ItemListenerSupport<Planeta, Planeta> {
     public void onReadError(Exception throwable) {
         super.onReadError(throwable);
 
-        System.out.println("ATENCIÓN!!! PlanetaItemListener - Exception en read" + throwable.getMessage());
+        System.out.println("ATENCIÓN!!! PlanetaItemListener - Exception en read: " + throwable.getMessage());
     }
 
     /**
