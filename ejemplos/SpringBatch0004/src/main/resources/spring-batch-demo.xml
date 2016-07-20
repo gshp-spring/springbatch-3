@@ -68,15 +68,15 @@
     
     <!--
         Lector de planteas. Esta reader de base de datos es una clase 
-        utilitaria provista por Spring Batch. Este bean ejecuta el query "sql"
-        y recorrer las filas resultantes. Cada fila es transformada con el
+        predefinida provista por Spring Batch. Este bean ejecuta la consulta "sql"
+        y recorre las filas resultantes. Cada fila es transformada con el
         "mapper" asociado. 
-        En este caso se usa un mapper utilitario, que de acuerdo al alias
-        indicado en cada columna del query lo asocia a un objeto Planeta.
+        En este caso se usa un mapper predefinido que de acuerdo al alias
+        indicado en cada columna de la consulta lo asocia a un objeto Planeta.
     -->
     <bean id="planetaItemReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
         <property name="dataSource" ref="dataSource" />
-        <property name="sql" value="select id_planeta as codigo, nombre as nombre, diametro as diametro, tipo as tipo, observaciones as significado from PLANETA"/>
+        <property name="sql" value="select id_planeta as codigo, nombre as nombre, diametro as diametro, tipo as tipo, observaciones as significado from planeta"/>
         <property name="rowMapper">
             <bean id="planetaMapper" class="org.springframework.jdbc.core.BeanPropertyRowMapper">
                 <property name="mappedClass">

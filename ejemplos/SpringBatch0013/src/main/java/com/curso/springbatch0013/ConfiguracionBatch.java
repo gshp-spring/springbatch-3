@@ -32,7 +32,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 @Configuration
 @EnableBatchProcessing
-public class BatchConfiguration {
+public class ConfiguracionBatch {
 
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
@@ -46,9 +46,9 @@ public class BatchConfiguration {
     // tag::readerwriterprocessor[]
     @Bean
     public FlatFileItemReader<Persona> reader() {
-        FlatFileItemReader<Persona> reader = new FlatFileItemReader<Persona>();
-        reader.setResource(new ClassPathResource("personas.csv"));
-        reader.setLineMapper(new DefaultLineMapper<Persona>() {
+        FlatFileItemReader<Persona> lector = new FlatFileItemReader<>();
+        lector.setResource(new ClassPathResource("personas.csv"));
+        lector.setLineMapper(new DefaultLineMapper<Persona>() {
             {
                 setLineTokenizer(new DelimitedLineTokenizer() {
                     {
@@ -62,7 +62,7 @@ public class BatchConfiguration {
                 });
             }
         });
-        return reader;
+        return lector;
     }
 
     @Bean

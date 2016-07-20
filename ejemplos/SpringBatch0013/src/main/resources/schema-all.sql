@@ -1,4 +1,4 @@
-DROP TABLE people IF EXISTS;
+DROP TABLE personas IF EXISTS;
 
 CREATE TABLE personas  (
     persona_id BIGINT IDENTITY NOT NULL PRIMARY KEY,
