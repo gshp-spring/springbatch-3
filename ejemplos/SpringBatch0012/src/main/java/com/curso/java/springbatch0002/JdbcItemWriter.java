@@ -17,6 +17,10 @@ import org.springframework.stereotype.Component;
  *
  * @author formacion
  */
+/*
+Esta lógica podría haberse hecho empleando "JdbcBatchItemWriter" predefinido
+por Spring Batch sin codificar nada en Java, sino por configuración
+*/
 @Component
 public class JdbcItemWriter implements ItemWriter<Planeta> {
 

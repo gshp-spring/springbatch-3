@@ -7,8 +7,9 @@ package com.curso.java.springbatch0002;
 
 import java.util.List;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class ConsolaItemWriter implements ItemWriter<Planeta> {
 
     

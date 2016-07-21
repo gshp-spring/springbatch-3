@@ -107,8 +107,9 @@
         del "itemReader". Cada elemento leido por el "planetaItemReader" es
         procesado por este "itemWriter".
         ConsolaItemWriter recibe entonces un Planeta y lo muestra por consola.
+        En este ejemplo, el bean lo hemos declarado usando @Component
     -->
-    <bean id="consolaItemWriter" class="com.curso.java.springbatch0002.ConsolaItemWriter"/>
+    <!--<bean id="consolaItemWriter" class="com.curso.java.springbatch0002.ConsolaItemWriter"/>-->
 
     <!--
         Este bean es usado por "planetaItemReader" (en particular, por su
