@@ -43,7 +43,6 @@ public class ConfiguracionBatch {
     @Autowired
     public DataSource dataSource;
 
-    // tag::readerwriterprocessor[]
     @Bean
     public FlatFileItemReader<Persona> reader() {
         FlatFileItemReader<Persona> lector = new FlatFileItemReader<>();
@@ -77,8 +76,8 @@ public class ConfiguracionBatch {
         writer.setSql("INSERT INTO personas (nombre, apellido) VALUES (:nombre, :apellido)");
         writer.setDataSource(dataSource);
         return writer;
-    }    
-    
+    }
+
     @Bean
     public JobExecutionListener listener() {
         return new JobCompletionNotificationListener(new JdbcTemplate(dataSource));

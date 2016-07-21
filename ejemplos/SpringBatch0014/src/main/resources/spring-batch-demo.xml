@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.curso.springbatch0014"/>
+
+       <!--
+        El repositorio de tareas de Spring Batch. Este bean es el encargado
+        de guardar la información de las ejecuciones en la base de datos.
+    -->
+    <batch:job-repository id="jobRepository" />
+
+    <!--
+        Un ejecutador de tareas. A través de esta clase es que se inicia la
+        ejecución de las taras batch.
+    -->
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher" p:jobRepository-ref="jobRepository"/>
+
+    <!--
+        Una trabajo de Spring Batch.
+        Este es el bean principal de Spring Batch, que declara el trabajo batch
+        que se va a ejecutar. El trabajo está compuesta de varios "pasos" (step).
+        Los pasos se ejecutan en forma secuencial.
+
+        En este ejemplo, el trabajo consiste en un único paso "imprimirPorConsola".
+        Este paso tiene un "itemReader" que lee planetas y los mapea a un objeto
+        Planeta, y un "itemWriter" que imprimir objetos Planeta por consola.
+    -->
+    <batch:job id="trabajoBatch" restartable="true">
+        <batch:step id="imprimirPorConsola">
+            <batch:tasklet task-executor="taskExecutor" allow-start-if-complete="true">
+                <batch:chunk reader="csvItemReader" 
+                             writer="consolaItemWriter" commit-interval="5"/>
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+    
+</beans>
