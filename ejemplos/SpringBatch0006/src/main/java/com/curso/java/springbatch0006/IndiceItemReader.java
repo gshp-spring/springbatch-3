@@ -35,7 +35,7 @@ public class IndiceItemReader extends CompassDaoSupport implements ItemReader {
              * Buscamos todos los planetas de tipo gaseoso y excluimos Martes
              * !!!!
              */
-            System.out.println("Buscamos todos los planetas de tipo gaseoso y excluimos Martes");
+            LOG.log(Level.INFO,"Buscamos todos los planetas de tipo gaseoso y excluimos Martes");
             return buscarPaginado("nombre:* AND tipo:gaseoso AND -martes");
         }
         return null;
@@ -76,7 +76,7 @@ public class IndiceItemReader extends CompassDaoSupport implements ItemReader {
                 }
             }
         } catch (Exception e) {
-            LOG.log(Level.SEVERE, ()->e.toString());
+            LOG.log(Level.SEVERE, e.toString());
         }
         return planeta;
     }

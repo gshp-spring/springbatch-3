@@ -20,7 +20,7 @@ public class ConsolaItemWriter implements ItemWriter<Planeta> {
             Collection<Planeta> col = (Collection<Planeta>) item.iterator().next();
             col.forEach(planeta -> System.out.println("Planeta leido: " + planeta));            
         } catch (Exception e) {
-            LOG.log(Level.SEVERE, () -> e.toString());            
+            LOG.log(Level.SEVERE, e.toString());            
         }
     }
 }

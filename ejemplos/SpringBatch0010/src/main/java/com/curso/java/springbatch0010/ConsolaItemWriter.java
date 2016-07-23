@@ -4,7 +4,6 @@
  */
 package com.curso.java.springbatch0010;
 
-import java.util.Collection;
 import java.util.List;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
@@ -32,8 +31,7 @@ public class ConsolaItemWriter implements ItemWriter<Planeta> {
     public void write(List<? extends Planeta> item) throws Exception {
 
         CabeceraArchivo cabeceraArchivo = (CabeceraArchivo) getStepExecution().getExecutionContext().get(CabeceraHandler.KEY_CABECERA);
-        Collection<Planeta> col = (Collection<Planeta>) item;
-        col.stream().map((planeta) -> {
+        item.stream().map(planeta -> {
             System.out.println("Registro " + getNumeroInformado() + " de "
                     + cabeceraArchivo.getCantidadRegistros() + ". "
                     + cabeceraArchivo.getDescripcion() + ": " + planeta.getNombre());

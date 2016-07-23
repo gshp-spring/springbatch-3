@@ -5,43 +5,36 @@
 package com.curso.java.springbatch0007;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.batch.core.listener.ItemListenerSupport;
 
 public class PlanetaItemListener extends ItemListenerSupport<Planeta, Planeta> {
 
-    /**
-     * {@inheritDoc}
-     */
+    private static final Logger LOG = Logger.getLogger(PlanetaItemListener.class.getName());
+
     @Override
     public void onProcessError(Planeta item, Exception throwable) {
         throw new UnsupportedOperationException("El step no tiene configurado un processor");
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void onReadError(Exception throwable) {
         super.onReadError(throwable);
-
-        System.out.println("ATENCIÓN!!! PlanetaItemListener - Exception en read: " + throwable.getMessage());
+        LOG.log(Level.SEVERE, "ATENCIÓN!!! PlanetaItemListener - Exception en read: " + throwable.getMessage());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void onWriteError(Exception throwable, List<? extends Planeta> item) {
         super.onWriteError(throwable, item);
 
         if (item == null || item.isEmpty()) {
-            System.out.println("ATENCIÓN!!! PlanetaItemListener - El write recibió un item nulo" + throwable.getMessage());
+            LOG.log(Level.SEVERE, "ATENCI\u00d3N!!! PlanetaItemListener - El write recibi\u00f3 un item nulo{0}", throwable.getMessage());
             return;
         }
 
-        item.stream().forEach((planeta) -> {
-            System.out.println("ATENCIÓN!!! PlanetaItemListener - Exception escribiendo el planeta: " + planeta.getNombre() + " - " + throwable.getMessage());
-        });
-
+        item.forEach(
+                planeta -> LOG.log(Level.SEVERE, "ATENCI\u00d3N!!! PlanetaItemListener - Exception escribiendo el planeta: {0} - {1}", new Object[]{planeta.getNombre(), throwable.getMessage()})
+        );
     }
 }

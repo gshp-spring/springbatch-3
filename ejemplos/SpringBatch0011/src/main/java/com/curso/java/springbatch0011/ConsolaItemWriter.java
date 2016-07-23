@@ -11,8 +11,8 @@ public class ConsolaItemWriter implements ItemWriter<Planeta> {
 
     @Override
     public void write(List<? extends Planeta> item) throws Exception {
-        item.forEach((planeta) -> {
-            System.out.println("Planeta leido: " + planeta);
-        });
+        item.forEach(
+                planeta -> System.out.println("Planeta leido: " + planeta)
+        );
     }
 }

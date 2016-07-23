@@ -26,9 +26,9 @@ public class CompassItemWriter extends CompassDaoSupport implements ItemWriter<P
                 public Planeta doInCompass(CompassSession session) throws CompassException {
                     try {
                         session.save(planeta);
-                        System.out.println("Guardando Planeta : " + planeta.toString());
+                        LOG.log(Level.INFO, "Guardando Planeta : {0}", planeta);
                     } catch (Exception e) {
-                        LOG.log(Level.SEVERE, () -> e.toString());
+                        LOG.log(Level.SEVERE, e.toString());
                     }
                     return null;
                 }
