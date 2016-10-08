@@ -57,7 +57,7 @@ public class CsvItemReader implements ItemReader<Planeta> {
     @Override
     public Planeta read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
         return Optional.ofNullable(reader.readLine())
-                .map(l -> factoriaPlanetas(l))
+                .map(linea -> factoriaPlanetas(linea))
                 .orElse(null);
     }
 

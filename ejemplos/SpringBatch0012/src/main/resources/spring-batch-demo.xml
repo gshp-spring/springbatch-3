@@ -118,6 +118,6 @@
         Su scope TIENE que ser "prototype", ya que se necesita una instancia
         nueva por cada invocación.
      -->
-    <bean id="planeta" scope="prototype" class="com.curso.java.springbatch0002.Planeta"/>
+    <!--<bean id="planeta" scope="prototype" class="com.curso.java.springbatch0002.Planeta"/>-->
 
 </beans>

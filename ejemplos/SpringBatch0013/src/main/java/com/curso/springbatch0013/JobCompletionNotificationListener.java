@@ -22,15 +22,15 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
     }
 
     @Override
-    public void beforeJob(JobExecution jobExecution) {        
+    public void beforeJob(JobExecution jobExecution) {
         LOG.info("Comienzo del job: " + new Date());
     }
 
     @Override
     public void afterJob(JobExecution jobExecution) {
-        final String orden = "SELECT nombre, apellido FROM personas";
         if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
             LOG.info("JOB FINALIZADO. Verificando resultados en la BD");
+            final String orden = "SELECT nombre, apellido FROM personas LIMIT 2 OFFSET 2";
             List<Persona> resultados = jdbcTemplate.query(
                     orden,
                     (rs, fila) -> new Persona(rs.getString(1), rs.getString(2))

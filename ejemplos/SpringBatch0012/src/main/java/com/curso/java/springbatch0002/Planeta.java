@@ -5,6 +5,11 @@
 
 package com.curso.java.springbatch0002;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class Planeta {
     private int codigo;
     private String nombre;

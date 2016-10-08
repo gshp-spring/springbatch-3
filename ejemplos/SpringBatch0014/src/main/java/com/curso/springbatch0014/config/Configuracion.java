@@ -48,7 +48,8 @@ public class Configuracion {
         ds.setMaxPoolSize(Integer.parseInt(e.getProperty("max")));
         ds.setMinPoolSize(Integer.parseInt(e.getProperty("min")));
         ds.setMaxStatements(Integer.parseInt(e.getProperty("maxSentencias")));
-        ds.setTestConnectionOnCheckout(Boolean.parseBoolean(e.getProperty("testOut")));
+        ds.setTestConnectionOnCheckin(Boolean.parseBoolean(e.getProperty("testOut")));
+        ds.setTestConnectionOnCheckout(Boolean.parseBoolean(e.getProperty("testIn")));
         return ds;
     }
 
