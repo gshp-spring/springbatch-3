@@ -26,7 +26,7 @@
         <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-core</artifactId>
-            <version>3.0.7.RELEASE</version>
+            <version>3.0.8.RELEASE</version>
             <type>jar</type>
         </dependency>
         <dependency>
