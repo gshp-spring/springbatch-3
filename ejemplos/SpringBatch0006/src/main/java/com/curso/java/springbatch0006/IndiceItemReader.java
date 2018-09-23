@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.compass.core.CompassDetachedHits;
+import org.compass.core.CompassException;
 import org.compass.core.CompassHit;
 import org.compass.core.CompassHits;
 import org.compass.core.CompassQuery;
@@ -49,7 +50,7 @@ public class IndiceItemReader extends CompassDaoSupport implements ItemReader {
      * @return List
      */
     private List<Planeta> buscarPaginado(String queryIndice) {
-        CompassDetachedHits results = null;
+        CompassDetachedHits results;
         final String query = queryIndice;
         final int from = 0;
         final int size = 100;
@@ -75,7 +76,7 @@ public class IndiceItemReader extends CompassDaoSupport implements ItemReader {
                     planeta.add((Planeta) hit.getData());
                 }
             }
-        } catch (Exception e) {
+        } catch (CompassException e) {
             LOG.log(Level.SEVERE, e.toString());
         }
         return planeta;

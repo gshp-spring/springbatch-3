@@ -9,10 +9,10 @@ import org.springframework.batch.item.ItemProcessor;
 /**
  * Esta clase sera la encargada de modificar los atributos "nombre" y
  * "significado" del objeto de dominio "Planeta". Lo que se hace como ejemplo es
- * que pase a mayuscula el nombre del planeta y su significado. Para que el
+ * que pase a mayúscula el nombre del planeta y su significado. Para que el
  * processor sea tomado como tal, debe implementar la interface ItemProcessor,
- * con los Generics indicando lo que recibe y lo que devolvera (en este caso
- * recibe un Planeta y devolvera un Planeta).
+ * con los Generics indicando lo que recibe y lo que devolverá (en este caso
+ * recibe un Planeta y devolverá un Planeta).
  */
 public class PlanetaProcessor implements ItemProcessor<Planeta, Planeta> {
 
